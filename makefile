@@ -23,11 +23,24 @@ KIND_CLUSTER    := makxtr-starter-cluster
 NAMESPACE       := sales-system
 SALES_APP       := sales
 AUTH_APP        := auth
-BASE_IMAGE_NAME := localhost/makxtr
+BASE_IMAGE_NAME := localhost/ss
 VERSION         := 0.0.1
 SALES_IMAGE     := $(BASE_IMAGE_NAME)/$(SALES_APP):$(VERSION)
 METRICS_IMAGE   := $(BASE_IMAGE_NAME)/metrics:$(VERSION)
 AUTH_IMAGE      := $(BASE_IMAGE_NAME)/$(AUTH_APP):$(VERSION)
+
+# ==============================================================================
+# Building containers
+
+build: sales
+
+sales:
+	docker build \
+		-f zarf/docker/dockerfile.sales \
+		-t $(SALES_IMAGE) \
+		--build-arg BUILD_REF=$(VERSION) \
+		--build-arg BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
+		.
 
 # ==============================================================================
 # Running from within k8s/kind
