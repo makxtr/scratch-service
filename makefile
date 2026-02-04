@@ -90,6 +90,15 @@ dev-logs:
 
 # ==============================================================================
 
+metrics:
+	expvarmon -ports="localhost:3010" -vars="build,requests,goroutines,errors,panics,mem:memstats.HeapAlloc,mem:memstats.HeapSys,mem:memstats.Sys"
+
+statsviz:
+	open -a "Google Chrome" http://localhost:3010/debug/statsviz
+
+# ==============================================================================
+
+
 dev-describe-deployment:
 	kubectl describe deployment --namespace=$(NAMESPACE) $(SALES_APP)
 
