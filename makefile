@@ -10,7 +10,7 @@ version:
 	go run api/services/sales/main.go --version
 
 curl:
-	curl -il -X GET http://localhost:3000/test
+	curl -il -X GET http://localhost:3000/liveness
 # ==============================================================================
 # Define dependencies
 
