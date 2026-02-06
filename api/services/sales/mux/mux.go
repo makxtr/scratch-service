@@ -3,13 +3,14 @@
 package mux
 
 import (
-	"net/http"
+	"os"
 
 	"github.com/makxtr/scratch-service/api/services/sales/route/sys/checkapi"
+	"github.com/makxtr/scratch-service/foundation/web"
 )
 
-func WebAPI() *http.ServeMux {
-	mux := http.NewServeMux()
+func WebAPI(shutdown chan os.Signal) *web.App {
+	mux := web.NewApp(shutdown)
 
 	checkapi.Routes(mux)
 
