@@ -8,6 +8,9 @@ help:
 	go run api/services/sales/main.go --help
 version:
 	go run api/services/sales/main.go --version
+
+curl:
+	curl -il -X GET http://localhost:3000/test
 # ==============================================================================
 # Define dependencies
 
