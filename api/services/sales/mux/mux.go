@@ -6,11 +6,13 @@ import (
 	"os"
 
 	"github.com/makxtr/scratch-service/api/services/sales/route/sys/checkapi"
+	"github.com/makxtr/scratch-service/app/api/mid"
+	"github.com/makxtr/scratch-service/foundation/logger"
 	"github.com/makxtr/scratch-service/foundation/web"
 )
 
-func WebAPI(shutdown chan os.Signal) *web.App {
-	mux := web.NewApp(shutdown)
+func WebAPI(log *logger.Logger, shutdown chan os.Signal) *web.App {
+	mux := web.NewApp(shutdown, mid.Logger(log))
 
 	checkapi.Routes(mux)
 
