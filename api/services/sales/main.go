@@ -16,6 +16,7 @@ import (
 	"github.com/makxtr/scratch-service/api/services/api/debug"
 	"github.com/makxtr/scratch-service/api/services/sales/mux"
 	"github.com/makxtr/scratch-service/foundation/logger"
+	"github.com/makxtr/scratch-service/foundation/web"
 )
 
 var build = "develop"
@@ -30,7 +31,7 @@ func main() {
 	}
 
 	traceIDFn := func(ctx context.Context) string {
-		return "" //web.GetTraceID(ctx)
+		return web.GetTraceID(ctx)
 	}
 
 	log = logger.NewWithEvents(os.Stdout, logger.LevelInfo, "SALES", traceIDFn, events)

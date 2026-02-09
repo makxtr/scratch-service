@@ -5,8 +5,9 @@ package mux
 import (
 	"os"
 
+	"github.com/makxtr/scratch-service/api/services/api/mid"
 	"github.com/makxtr/scratch-service/api/services/sales/route/sys/checkapi"
-	"github.com/makxtr/scratch-service/app/api/mid"
+
 	"github.com/makxtr/scratch-service/foundation/logger"
 	"github.com/makxtr/scratch-service/foundation/web"
 )
